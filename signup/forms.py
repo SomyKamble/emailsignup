@@ -19,4 +19,4 @@ class SignUpForm(UserCreationForm):
 class user_loginform(forms.Form):
 
     username=forms.CharField(max_length=500)
-    password=forms.PasswordInput(max_length=200)
+    password=forms.CharField(max_length=200,widget=forms.PasswordInput)
