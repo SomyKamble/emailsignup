@@ -11,8 +11,8 @@ from django.urls import reverse
 
 class Profile(models.Model):
     user= models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=200,blank=True)
-    location= models.CharField(max_length=200,blank=True)
+    #bio = models.TextField(max_length=200,blank=True)
+    #location= models.CharField(max_length=200,blank=True)
     birth_date=models.CharField(max_length=500,null=True,blank=True)
     email_confirmed=models.BooleanField(default=False)
 
