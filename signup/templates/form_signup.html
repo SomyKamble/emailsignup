@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+</head>
+<body>
+
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<center>
+<div class="card" style="width:500px">
+  <div class="card-header">{{name}}</div>
+    <div class="card-body">
+<form method="post" >
+    {% csrf_token %}
+
+   {% bootstrap_form form %}
+
+
+    <button type="submit" value="submit" class="btn btn-success">{{name}}</button>
+</form>
+</div>
+<div class="card-footer">Footer</div>
+    {% if name == 'login' %}
+    <a href="{% url 'Signup' %} " class="btn btn-success">Sign Up</a>
+
+    <a href="{% url 'reset_password' %} " class="btn btn-info">forgot Password</a>
+    {% endif %}
+</div>
+    </center>
+</body>
+</html>
