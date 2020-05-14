@@ -19,7 +19,7 @@ from .models import *
 def index(request):
     request.session['name']='Username'
     request.session['password']='password'
-    return HttpResponse("Hello")
+    return HttpResponse("Hello you are loged in start creating your website from here")
 
 
 
@@ -128,3 +128,8 @@ def user_log(request):
 def password_reset(request):
     return HttpResponse("its to de done")
 
+def uname(request):
+    pro=User.objects.all()
+    print(pro)
+
+    return HttpResponse("<h1>somy</h1>")

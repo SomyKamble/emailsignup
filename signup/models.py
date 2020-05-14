@@ -17,16 +17,16 @@ class Profile(models.Model):
     email_confirmed=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
-#@receiver(post_save,sender=User)
-def update_user_profile(sender,instance,created,**kwargs):
+@receiver(post_save, sender=User)
+def update_profile_signal(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
 
-post_save.connect(update_user_profile,sender=User)
+#post_save.connect(update_user_profile,sender=User)
 
 class prof(User):
     req=models.CharField(max_length=200)
@@ -48,4 +48,3 @@ def save_pos(sender,instance,**kwargs):
 
 pre_save.connect(save_pos,sender=Posm)
 post_save.connect(save_pos,sender=Posm)
-
